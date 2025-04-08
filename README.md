@@ -15,9 +15,11 @@
 
 ```bash
 git clone https://github.com/Grindell/resumaster-bot.git
+```
+```bash
 cd resumaster-bot
 ```
-# Переименуй .env.example в .env
+2 Переименуй .env.example в .env
 Добавь свои данные для
 ```
 LOGIN = example@mail.com
