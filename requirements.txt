@@ -1,0 +1,6 @@
+python-telegram-bot==20.6
+python-dotenv
+requests>=2.25.1
+playwright>=1.40.0
+schedule
+setuptools

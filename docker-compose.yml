@@ -1,0 +1,13 @@
+services:
+  resumaster_bot:
+    build: .
+    container_name: resumaster_bot
+    restart: always
+    environment:
+      - TZ=Europe/Moscow
+    volumes:
+      - ./storage:/app/storage
+      - ./logs:/app/logs
+    working_dir: /app
+    env_file:
+      - .env
