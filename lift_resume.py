@@ -8,24 +8,44 @@ def run():
         page = browser.new_page()
 
         try:
-            # Step 1
-            page.goto("https://hh.ru/account/login", timeout=30000)
-            # Step 2
-            page.wait_for_selector("input[name='login']", timeout=15000)
-            page.fill("input[name='login']", LOGIN)            
-            # Step 3
-            page.locator("a[data-qa='expand-login-by-password']").click(force=True)
+            print("Step 1")
+            page.goto("https://hh.ru/account/login")
             page.wait_for_timeout(2000)
-            # Step 4
-            page.wait_for_selector("input[name='password']:not([type='hidden'])", timeout=15000)
-            page.fill("input[name='password']:not([type='hidden'])", PASSWORD)
-            # Step 5
-            page.locator("text='Войти в личный кабинет'").click()
-            page.wait_for_timeout(3000)
-            # Step 6
+            
+            print("Step 2")
+            submit_btn = page.locator('button[data-qa="submit-button"]')
+            submit_btn.click()
+            page.wait_for_timeout(2000)
+            
+            print("Step 3")
+            page.click('text="Почта"')
+            page.wait_for_timeout(2000)
+            
+            print("Step 4")
+            page.wait_for_selector("input[name='username']", timeout=15000)
+            page.fill("input[name='username']", LOGIN)  
+            page.wait_for_timeout(2000)
+             
+            print("Step 5")
+            page.wait_for_selector('text="Войти с паролем"')
+            page.click('text="Войти с паролем"')   
+            page.wait_for_timeout(2000)
+                  
+            print("Step 6")
+            page.wait_for_selector("input[name='password']", timeout=15000)
+            page.fill("input[name='password']", PASSWORD)
+            page.wait_for_timeout(2000)
+            
+            print("Step 7")
+            page.wait_for_selector('button[data-qa="submit-button"]', timeout=15000)
+            page.click('button[data-qa="submit-button"]')
+            page.wait_for_timeout(2000)
+            
+            print("Step 8")
             page.goto("https://hh.ru/applicant/resumes")
             page.wait_for_timeout(2000)
-            # Step 7
+            
+            print("Step 9")
             lift_button = page.locator("button:has-text('Поднять')")
             if lift_button.count() > 0:
                 lift_button.first.click()
